@@ -1,0 +1,23 @@
+version: '3.0'
+services:
+
+     postgres:
+          image: 'postgres:13.1-alpine'
+          container_name: postgres
+          environment:
+              - POSTGRES_USER=postgres
+              - POSTGRES_PASSWORD=root
+              - POSTGRES_DB=studentdb
+     app:
+       image: 'jollyflake/studentimage'
+       build:
+          context: .
+       ports:
+       - 8081:8081
+       container_name: student
+ 
+       environment:
+           - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/studentdb
+           - SPRING_DATASOURCE_USERNAME=postgres
+           - SPRING_DATASOURCE_PASSWORD=root
+           - SPRING_JPA_HIBERNATE_DDL_AUTO=create
