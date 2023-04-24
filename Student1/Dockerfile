@@ -1,3 +1,3 @@
 FROM adoptopenjdk:16-jre
-COPY FlightManagementSystem*.jar    /app.jar
+COPY Student1*.jar /app.jar
 CMD java -jar /app.jar
